@@ -36,6 +36,5 @@ int main()
         cout << "Please enter a valid response";
         break;
     }
-
     return 0;
 }
