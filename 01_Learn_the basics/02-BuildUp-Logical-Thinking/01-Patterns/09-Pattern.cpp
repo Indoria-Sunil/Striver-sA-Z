@@ -2,7 +2,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printingPatter(int num)
+
+void printingPatter1(int num)
+{
+
+    for (int i = 0; i < num; i++)
+    {
+        for (int k = 0; k < num - i - 1; k++)
+        {
+            cout << " ";
+        }
+
+        for (int j = 0; j < 2 * i + 1; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}
+
+void printingPatter2(int num)
 {
 
     for (int i = num; i > 0; i--)
@@ -26,6 +45,7 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    printingPatter(num);
+    printingPatter1(num);
+    printingPatter2(num);
     return 0;
 }
