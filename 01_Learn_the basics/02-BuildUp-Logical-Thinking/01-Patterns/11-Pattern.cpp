@@ -4,16 +4,15 @@ using namespace std;
 
 void printingPatter(int num)
 {
+    bool ch = 1;
 
-    for (int i = 1; i <= num * 2 - 1; i++)
+    for (int i = 0; i < num; i++)
     {
-        int stars = i;
-        if (i > num)
-            stars = 2 * num - i;
 
-        for (int j = 1; j <= stars; j++)
+        for (int j = 0; j <= i; j++)
         {
-            cout << "* ";
+            cout <<ch<<" ";
+            ch = !ch;
         }
         cout << endl;
     }
