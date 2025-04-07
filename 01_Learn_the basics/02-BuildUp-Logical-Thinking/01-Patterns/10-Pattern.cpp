@@ -2,24 +2,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 void printingPatter1(int num)
 {
 
-    for (int i = 1; i <= num*2-1; i++)
+    for (int i = 1; i <= num * 2 - 1; i++)
     {
         int stars = i;
-        if(i > num) stars = 2*num - i;
+        if (i > num)
+            stars = 2 * num - i;
 
-        for(int j = 1; j <= stars; j++)
+        for (int j = 1; j <= stars; j++)
         {
-            cout<<"* ";
+            cout << "* ";
         }
-        cout<<endl;
+        cout << endl;
     }
 }
-
-
 
 int main()
 {
