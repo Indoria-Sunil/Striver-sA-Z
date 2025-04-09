@@ -3,7 +3,7 @@
 using namespace std;
 
 
-void printingPatter1(int num)
+void printingPattern1(int num)
 {
 
     for (int i = 0; i < num; i++)
@@ -21,7 +21,7 @@ void printingPatter1(int num)
     }
 }
 
-void printingPatter2(int num)
+void printingPattern2(int num)
 {
 
     for (int i = num; i > 0; i--)
@@ -45,7 +45,7 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    printingPatter1(num);
-    printingPatter2(num);
+    printingPattern1(num);
+    printingPattern2(num);
     return 0;
 }

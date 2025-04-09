@@ -6,9 +6,10 @@ void printingPattern(int num)
 {
     for (int i = 0; i < num; i++)
     {
-        for (int j = 0; j < num; j++)
-        {
-            cout << "* ";
+        char alp = 'A';
+        for (int j = 0; j < num - i; j++)
+        {            
+            cout << alp++ << " ";
         }
         cout << endl;
     }

@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printingPatter(int num)
+void printingPattern(int num)
 {
     bool ch = 1;
 
@@ -24,6 +24,6 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    printingPatter(num);
+    printingPattern(num);
     return 0;
 }

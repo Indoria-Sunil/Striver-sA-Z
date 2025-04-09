@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printingPatter(int num)
+void printingPattern(int num)
 {
     int dig = 1;
     for (int i = 0; i < num; i++)
@@ -22,6 +22,6 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    printingPatter(num);
+    printingPattern(num);
     return 0;
 }
