@@ -4,12 +4,13 @@ using namespace std;
 
 void printingPattern(int num)
 {
-    char alp = 'A';
+    char alp = 'E';
     for (int i = 0; i < num; i++)
     {
+        char dup = alp;
         for (int j = 0; j < i + 1; j++)
         {            
-            cout << alp << " ";
+            cout << dup-- << " ";
         }
         alp++;
         cout << endl;
