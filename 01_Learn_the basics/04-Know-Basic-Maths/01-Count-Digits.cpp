@@ -2,21 +2,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int countingDigits(int n)
+
+// // Brute Force 
+// int countingDigits(int num)
+// {
+//     if (num <= 0) return -1;    
+//     int count = 0;
+//     while (num > 0)
+//     {
+//         count++;
+//         num /= 10;
+//     }
+//     return count;
+// }
+
+
+// Optimized 
+int countingDigits(int num)
 {
-    for (int i = 0; i < n * 2 - 1; i++)
-    {
-        for (int j = 0; j < n * 2 - 1; j++)
-        {
-            int top = i;
-            int bottom = 2 * n - 1 - i;
-            int right = 2 * n - 2 - j;
-            int left = j;
-            int mini = min(top, min(bottom, min(left, right)));
-            cout<<n - mini<<" ";
-        }
-        cout << endl;
-    }
+    return int (log10(num) + 1);
 }
 
 int main()
@@ -25,6 +29,6 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    printingPattern(num);
+    cout<< countingDigits(num);
     return 0;
 }
