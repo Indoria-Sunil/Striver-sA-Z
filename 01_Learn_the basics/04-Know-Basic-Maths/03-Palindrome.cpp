@@ -3,6 +3,7 @@
 using namespace std;
 
 
+
 int ReverseNumber(int num)
 {
     int ans = 0;
@@ -21,6 +22,10 @@ int main()
     cout << "Enter the number: ";
     cin >> num;
 
-    cout<< ReverseNumber(num);
+    if (ReverseNumber(num) == num) {
+        cout << "Yes! It's a Palindrome" << endl;
+    } else {
+        cout << "Not a Palindrome :/" << endl;
+    }
     return 0;
 }
