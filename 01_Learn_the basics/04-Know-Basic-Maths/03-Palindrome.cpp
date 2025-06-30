@@ -2,8 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int ReverseNumber(int num)
 {
     int ans = 0;
