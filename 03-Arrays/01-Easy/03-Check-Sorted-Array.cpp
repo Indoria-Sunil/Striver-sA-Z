@@ -2,6 +2,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+
+
 bool isSorted(vector<int> nums)
 {
     if (nums.size() == 0 || nums.size() == 1)
