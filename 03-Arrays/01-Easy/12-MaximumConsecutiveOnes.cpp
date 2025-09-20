@@ -3,6 +3,9 @@ using namespace std;
 
 #define fast_io ios::sync_with_stdio(false); cin.tie(nullptr);
 
+
+// Time Complexity: O(N)
+// Space Complexity: O(1)
 int findingMaxConsecutiveOnes(const vector<int> &nums) {
     int count = 0;
     int maxCount = 0;
