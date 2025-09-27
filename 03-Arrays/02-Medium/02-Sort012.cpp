@@ -13,7 +13,7 @@ using namespace std;
 //     sort(arr.begin(), arr.end());
 // }
 
-// --------------- Brute Force 2 Approach -----------------//
+// --------------- Better  Approach -----------------//
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 // void sortArray(vector<int> &arr, int n)
