@@ -54,6 +54,7 @@ using namespace std;
 
 // --------------- Optimal Approach (Kadane's Algorithm) -----------------//
 // Time Complexity: O(N)
+// Space Complexity: O(1)
 int maxSubarraySum(const vector<int> &arr, int n)
 {
     int maxSum = INT_MIN;
