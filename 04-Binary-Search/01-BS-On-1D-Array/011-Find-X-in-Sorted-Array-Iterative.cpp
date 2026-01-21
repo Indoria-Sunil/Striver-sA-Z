@@ -34,7 +34,7 @@ int main()
     if (index == -1)
         cout << "Element not found :/";
     else
-        cout << "Element found at index: " << index;
+        cout << "Element found at index: " << index << endl;
 
     return 0;
 }
