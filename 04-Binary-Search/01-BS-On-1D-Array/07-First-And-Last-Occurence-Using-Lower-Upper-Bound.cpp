@@ -6,7 +6,7 @@ class FirstAndLast
 {
 private:
 public:
-    int findingFirstOccurence(vector<int> nums, int target)
+    int findingLowerBound(vector<int> nums, int target)
     {
         int first = -1;
         int low = 0, high = nums.size() - 1;
@@ -14,23 +14,21 @@ public:
         {
             int mid = low + (high - low) / 2;
 
-            if (nums[mid] == target)
+            if (nums[mid] >= target)
             {
                 first = mid;
                 high = mid - 1;
             }
 
-            else if (nums[mid] > target)
-            {
-                high = mid - 1;
-            }
             else
+            {
                 low = mid + 1;
+            }
         }
         return first;
     }
 
-    int findingLastOccurence(vector<int> nums, int target)
+    int findingUpperBound(vector<int> nums, int target)
     {
         int last = -1;
         int low = 0, high = nums.size() - 1;
@@ -39,27 +37,27 @@ public:
         {
             int mid = low + (high - low) / 2;
 
-            if (nums[mid] == target)
+            if (nums[mid] > target)
             {
                 last = mid;
-                low = mid + 1;
-            }
-
-            else if (nums[mid] > target)
-            {
                 high = mid - 1;
             }
+
             else
+            {
                 low = mid + 1;
+            }
         }
         return last;
     }
 
     pair<int, int> getFirstAndLast(vector<int> nums, int target)
     {
-        int first = findingFirstOccurence(nums, target);
-        if(first == -1) return {-1, -1};
-        else return {first, findingLastOccurence(nums, target)};
+        int first = findingLowerBound(nums, target);
+        if (first == -1)
+            return {-1, -1};
+        else
+            return {first, findingUpperBound(nums, target) - 1};
     }
 };
 
