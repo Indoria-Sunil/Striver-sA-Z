@@ -14,7 +14,7 @@ public:
 
         while (low <= high)
         {
-            int mid = low + (high - low) / 2;
+            long long mid = low + (high - low) / 2;
 
             if (mid * mid <= number)
             {
