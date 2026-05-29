@@ -23,6 +23,7 @@ public:
 
 Node *creatingLinkedList(vector<int> arr)
 {
+    if(arr.size() == 0) return NULL;
     Node *head = new Node(arr[0]);
     Node *temp = head;
     for (int i = 1; i < arr.size(); i++)
