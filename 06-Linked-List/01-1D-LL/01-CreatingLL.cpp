@@ -34,6 +34,17 @@ Node *creatingLinkedList(vector<int> arr)
     return head;
 }
 
+void printingLL(Node *head)
+{
+    while (head)
+    {
+        cout << head->data << " -> ";
+        head = head->next;
+    }
+    cout<<"NULL";
+}
+
+
 int main()
 {
     vector<int> arr = {2, 5, 8, 7};
