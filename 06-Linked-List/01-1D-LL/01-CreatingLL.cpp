@@ -49,13 +49,7 @@ int main()
 {
     vector<int> arr = {2, 5, 8, 7};
     Node *head = creatingLinkedList(arr);
-    while (head)
-    {
-        cout << head->data << "-> ";
-        head = head->next;
-    }
-    if (!head)
-        cout << "NULL";
+    printingLL(head);
 
     return 0;
 }
