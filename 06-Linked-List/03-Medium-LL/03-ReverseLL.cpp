@@ -80,6 +80,19 @@ public:
         }
         return headRev;
     }
+
+    Node* reversingLinkedListRecursive(Node* head)
+    {
+        if(head == NULL || head->next == NULL)
+        {
+            return head;
+        }
+        Node* newHead = reversingLinkedListRecursive(head->next);
+        Node* front = head->next;
+        front->next = head;
+        head->next = NULL;
+        return newHead;
+    }
 };
 
 int main()
@@ -89,7 +102,9 @@ int main()
     Solution obj;
     cout << "Before Reversing: ";
     printingLL(head);
-    head = obj.reversingLinkedListBrute(head);
+    // head = obj.reversingLinkedListBrute(head);
+    head = obj.reversingLinkedListRecursive(head);
+
     cout << "\nAfter Reversing: ";
     printingLL(head);
     return 0;
