@@ -2,13 +2,76 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class Node
+{
+
+public:
+    int data;
+    Node *next;
+    Node(int data, Node *next)
+    {
+        this->data = data;
+        this->next = next;
+    }
+
+    Node(int data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+Node *creatingLinkedList(vector<int> arr)
+{
+    if (arr.size() == 0)
+        return NULL;
+    Node *head = new Node(arr[0]);
+    Node *temp = head;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        temp->next = new Node(arr[i]);
+        temp = temp->next;
+    }
+    return head;
+}
+
+void printingLL(Node *head)
+{
+    while (head)
+    {
+        cout << head->data << " -> ";
+        head = head->next;
+    }
+    cout << "NULL";
+}
+
+class Solution
+{
+public:
+    bool searchingInLL(Node *head, int data)
+    {
+        Node *temp = head;
+        while (temp)
+        {
+            if (temp->data == data)
+            {
+                return true;
+            }
+            temp = temp->next;
+        }
+        return false;
+    }
+};
+
 int main()
 {
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+    vector<int> arr = {2, 5, 8, 7};
+    Node *head = creatingLinkedList(arr);
+    Solution obj;
+    int ele;
+    cout<<"Enter the element to be searched: ";
+    cin>>ele;
+    cout<<obj.searchingInLL(head, ele);
 
-    
     return 0;
 }
