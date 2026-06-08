@@ -24,6 +24,18 @@ public:
 class Solution
 {
 public:
+    Node *detectCycleBrute(Node *head)
+    {
+        Node *temp = head;
+        map<Node*, int> mp;
+        while(temp)
+        {
+            if(mp.find(temp) != mp.end()) return temp;
+            mp[temp] = 1;
+            temp = temp->next;
+        }
+        return nullptr;
+    }
     Node *detectCycle(Node *head)
     {
 
