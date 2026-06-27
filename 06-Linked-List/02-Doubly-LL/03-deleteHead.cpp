@@ -54,8 +54,14 @@ class Solution
 public:
     Node *deletingHeadOfDLL(Node *head)
     {
-        if (!head || !head->next)
+        if (head == NULL)
             return NULL;
+
+        if (head->next == NULL)
+        {
+            delete head;
+            return NULL;
+        }
 
         Node *prev = head;
         head = head->next;
@@ -66,37 +72,83 @@ public:
         return head;
     }
 
-    Node* deletingTailOfLL(Node* head)
+    Node *deletingTailOfDLL(Node *head)
     {
 
-        if(head == NULL || head->next == NULL) return NULL;
-        Node* tail = head;
+        if (head == NULL)
+            return NULL;
+
+        if (head->next == NULL)
+        {
+            delete head;
+            return NULL;
+        }
+        Node *tail = head;
         while (tail->next)
         {
             tail = tail->next;
         }
-        Node* prev = tail->back;
+        Node *prev = tail->back;
         prev->next = NULL;
         tail->back = NULL;
         delete tail;
         return head;
-        
     }
 
+    Node *deleteKthElement(Node *head, int k)
+    {
+        int count = 0;
+        Node *temp = head;
+        while (temp)
+        {
+            count++;
+            if (count == k)
+            {
+                break;
+            }
+            temp = temp->next;
+        }
 
+        if (temp == NULL)
+            return head;
+
+        Node *front = temp->next;
+        Node *prev = temp->back;
+
+        if (front == NULL && prev == NULL)
+        {
+            delete temp;
+            return NULL;
+        }
+        else if (front == NULL)
+        {
+            return deletingTailOfDLL(head);
+        }
+        else if (prev == NULL)
+        {
+            return deletingHeadOfDLL(head);
+        }
+        front->back = prev;
+        prev->next = front;
+        temp->back = NULL;
+        temp->next = NULL;
+        delete temp;
+
+        return head;
+    }
 };
 int main()
 {
     vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     Node *head = creatingDoublyLL(nums);
-    cout<<"Linked List before: ";
+    cout << "Linked List before: ";
     printingDLL(head);
     Solution obj;
     // head = obj.deletingHeadOfDLL(head);
-    head = obj.deletingTailOfLL(head);
-    cout<<"\nLinked List After: ";
+    // head = obj.deletingTailOfDLL(head);
+    head = obj.deleteKthElement(head, 5);
+    cout << "\nLinked List After: ";
     printingDLL(head);
-
 
     return 0;
 }
