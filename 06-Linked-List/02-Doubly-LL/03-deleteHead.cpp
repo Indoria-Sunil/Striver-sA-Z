@@ -65,6 +65,25 @@ public:
         delete prev;
         return head;
     }
+
+    Node* deletingTailOfLL(Node* head)
+    {
+
+        if(head == NULL || head->next == NULL) return NULL;
+        Node* tail = head;
+        while (tail->next)
+        {
+            tail = tail->next;
+        }
+        Node* prev = tail->back;
+        prev->next = NULL;
+        tail->back = NULL;
+        delete tail;
+        return head;
+        
+    }
+
+
 };
 int main()
 {
@@ -73,7 +92,8 @@ int main()
     cout<<"Linked List before: ";
     printingDLL(head);
     Solution obj;
-    head = obj.deletingHeadOfDLL(head);
+    // head = obj.deletingHeadOfDLL(head);
+    head = obj.deletingTailOfLL(head);
     cout<<"\nLinked List After: ";
     printingDLL(head);
 
