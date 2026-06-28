@@ -55,10 +55,13 @@ public:
     Node *insertionBeforeHead(Node *head, int val)
     {
         Node *newHead = new Node(val);
-        newHead->next = head;
-        head->back = newHead;
-        head = newHead;
-        return head;
+        if (head != nullptr)
+        {
+            newHead->next = head;
+            head->back = newHead;
+        }
+
+        return newHead;
     }
 
     Node *insertionBeforeTail(Node *head, int val)
@@ -88,6 +91,44 @@ public:
 
         return head;
     }
+
+    Node *insertionBeforeKthNode(Node *head, int val, int k)
+    {
+        if (head == nullptr)
+            return nullptr;
+
+        if (k == 1)
+            return insertionBeforeHead(head, val);
+
+        Node *temp = head;
+        int count = 1;
+
+        while (temp && count < k)
+        {
+            temp = temp->next;
+            count++;
+        }
+
+        if (temp == nullptr)
+            return head; // invalid k
+
+        Node *prev = temp->back;
+        Node *newNode = new Node(val, temp, prev);
+
+        prev->next = newNode;
+        temp->back = newNode;
+
+        return head;
+    }
+    
+    void insertionBeforeGivenNode(Node* node, int val)
+    {
+        Node* prev = node->back;
+        Node* temp = new Node(val, node, prev);
+        prev->next = temp;
+        node->back = temp;
+    }
+
 };
 
 int main()
@@ -98,7 +139,9 @@ int main()
     printingDLL(head);
     Solution obj;
     // head = obj.insertionBeforeHead(head, 0);
-    head = obj.insertionBeforeTail(head, 89);
+    // head = obj.insertionBeforeTail(head, 89);
+    // head = obj.insertionBeforeKthNode(head, 89, 9);
+    obj.insertionBeforeGivenNode(head->next,10);
     cout << "\nLinked List  After: ";
     printingDLL(head);
 
