@@ -136,6 +136,25 @@ public:
 
         return head;
     }
+
+
+    //General implementation (handles all cases)
+    Node *deleteNode(Node *head, Node *temp)
+    {
+        if (temp == nullptr)
+            return head;
+
+        if (temp->back)
+            temp->back->next = temp->next;
+        else
+            head = temp->next;
+
+        if (temp->next)
+            temp->next->back = temp->back;
+
+        delete temp;
+        return head;
+    }
 };
 int main()
 {
@@ -146,7 +165,8 @@ int main()
     Solution obj;
     // head = obj.deletingHeadOfDLL(head);
     // head = obj.deletingTailOfDLL(head);
-    head = obj.deleteKthElement(head, 5);
+    // head = obj.deleteKthElement(head, 5);
+    head = obj.deleteNode(head, head->next);
     cout << "\nLinked List After: ";
     printingDLL(head);
 
