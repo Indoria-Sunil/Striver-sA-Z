@@ -28,7 +28,7 @@ Node *creatingDoublyLL(vector<int> &nums)
     Node *head = new Node(nums[0]);
     Node *prev = head;
 
-    for (int i = 1; i < nums.size();i++)
+    for (int i = 1; i < nums.size(); i++)
     {
         Node *temp = new Node(nums[i], NULL, prev);
         prev->next = temp;
@@ -52,26 +52,26 @@ void printingDLL(Node *head)
 class Solution
 {
 
-    public:
-
-    vector<pair<int, int>> findingPair(Node* head, int sum)
+public:
+    vector<pair<int, int>> findingPair(Node *head, int sum)
     {
-        
-        vector<pair<int,int>> ans;
-        
-        if(head == nullptr) return ans;
 
-        Node* front = head;
-        Node* tail = head;
+        vector<pair<int, int>> ans;
+
+        if (head == nullptr)
+            return ans;
+
+        Node *front = head;
+        Node *tail = head;
 
         while (tail->next)
         {
-            tail = tail->next;            
+            tail = tail->next;
         }
 
         while (front->data < tail->data)
         {
-            if(front->data + tail->data == sum)
+            if (front->data + tail->data == sum)
             {
                 ans.push_back({front->data, tail->data});
                 front = front->next;
@@ -86,8 +86,7 @@ class Solution
                 tail = tail->back;
             }
         }
-        return ans;       
-
+        return ans;
     }
 };
 
@@ -97,13 +96,12 @@ int main()
     Node *head = creatingDoublyLL(nums);
     // printingDLL(head);
     Solution obj;
-    vector<pair<int,int>> ans = obj.findingPair(head, 8);
+    vector<pair<int, int>> ans = obj.findingPair(head, 8);
 
-    for(auto it : ans)
+    for (auto it : ans)
     {
-        cout<<it.first<<" "<<it.second<<endl;
+        cout << it.first << " " << it.second << endl;
     }
-
 
     return 0;
 }
