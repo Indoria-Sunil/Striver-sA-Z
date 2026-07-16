@@ -58,7 +58,6 @@ public:
         Node *temp = head;
         Node *nextNode;
 
-        while (temp && temp->next)
         {
             nextNode = temp->next;
 
