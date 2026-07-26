@@ -22,7 +22,8 @@ class Solution
 public:
     Node *copyRandomListBrute(Node *head)
     {
-        if(head == nullptr) return nullptr;
+        if (head == nullptr)
+            return nullptr;
 
         unordered_map<Node *, Node *> mp;
 
@@ -47,33 +48,63 @@ public:
 
     Node *copyRandomListOptimal(Node *head)
     {
-        if(head == nullptr) return nullptr;
-
-        unordered_map<Node *, Node *> mp;
+        if (head == nullptr)
+            return nullptr;
 
         Node *temp = head;
+        Node *newNode;
+
         while (temp)
         {
-            Node *newNode = new Node(temp->data);
-            mp[temp] = newNode;
-            temp = temp->next;
+            newNode = new Node(temp->data);
+            newNode->next = temp->next;
+            temp->next = newNode;
+            temp = newNode->next;
         }
 
         temp = head;
-        Node *copyNode;
+
         while (temp)
         {
-            mp[temp]->next = (temp->next) ? mp[temp->next] : nullptr;
-            mp[temp]->random = (temp->random) ? mp[temp->random] : nullptr;
-            temp = temp->next;
+            newNode = temp->next;
+            if (temp->random)
+            {
+                newNode->random = temp->random->next;
+            }
+            else
+            {
+                newNode->random = nullptr;
+            }
+
+            temp = temp->next->next;
         }
-        return mp[head];
+
+        Node *dummy = new Node(-1);
+        Node *res = dummy;
+        temp = head;
+
+        while (temp)
+        {
+            newNode = temp->next;
+
+            temp->next = newNode->next;
+            temp = temp->next;
+
+            res->next = newNode;
+            res = res->next;
+
+            if (temp)
+                newNode->next = temp->next;
+        }
+        Node *ans = dummy->next;
+        delete dummy;
+        return ans;
     }
 };
 
-void printList(Node* head)
+void printList(Node *head)
 {
-    Node* temp = head;
+    Node *temp = head;
 
     while (temp)
     {
@@ -90,7 +121,7 @@ void printList(Node* head)
     }
 }
 
-Node* createLinkedList()
+Node *createLinkedList()
 {
     // Create 10 nodes
     Node *head = new Node(1);
@@ -116,16 +147,16 @@ Node* createLinkedList()
     ninth->next = tenth;
 
     // Connect random pointers
-    head->random = fifth;         // 1 -> 5
-    second->random = eighth;      // 2 -> 8
-    third->random = head;         // 3 -> 1
-    fourth->random = tenth;       // 4 -> 10
-    fifth->random = third;        // 5 -> 3
-    sixth->random = nullptr;      // 6 -> NULL
-    seventh->random = seventh;    // 7 -> 7
-    eighth->random = second;      // 8 -> 2
-    ninth->random = sixth;        // 9 -> 6
-    tenth->random = fourth;       // 10 -> 4
+    head->random = fifth;      // 1 -> 5
+    second->random = eighth;   // 2 -> 8
+    third->random = head;      // 3 -> 1
+    fourth->random = tenth;    // 4 -> 10
+    fifth->random = third;     // 5 -> 3
+    sixth->random = nullptr;   // 6 -> NULL
+    seventh->random = seventh; // 7 -> 7
+    eighth->random = second;   // 8 -> 2
+    ninth->random = sixth;     // 9 -> 6
+    tenth->random = fourth;    // 10 -> 4
 
     return head;
 }
@@ -133,13 +164,14 @@ Node* createLinkedList()
 int main()
 {
 
-    Node* head = createLinkedList();
-    cout<<"Before Cloning LL is : \n\n";
+    Node *head = createLinkedList();
+    cout << "Before Cloning LL is : \n\n";
     printList(head);
 
     Solution obj;
-    Node* newHead = obj.copyRandomListBrute(head);
-    cout<<"\n\nAfter cloning new LL is: \n\n";
+    // Node *newHead = obj.copyRandomListBrute(head);
+    Node *newHead = obj.copyRandomListOptimal(head);
+    cout << "\n\nAfter cloning new LL is: \n\n";
     printList(newHead);
     return 0;
 }
