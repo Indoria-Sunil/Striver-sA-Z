@@ -8,7 +8,7 @@ public:
     int convert(string s, int index, long long ans, int sign)
     {
 
-         // Base case: end of string or non-digit
+        // Base case: end of string or non-digit
         if (index == s.size() || !isdigit(s[index]))
         {
             return sign * ans;
@@ -56,7 +56,7 @@ public:
 int main()
 {
     Solution obj;
-    cout<<obj.myAtoi("     -2356463");
+    cout << obj.myAtoi("     -2356463");
 
     return 0;
 }
